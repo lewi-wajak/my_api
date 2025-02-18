@@ -3,8 +3,8 @@ class VolcanosController < ApplicationController
 
   # GET /volcanos
   def index
-    @volcanos = Volcano.all
-
+    @volcanos = Volcano.page(params[:page]).per(20)
+    
     render json: @volcanos
   end
 
