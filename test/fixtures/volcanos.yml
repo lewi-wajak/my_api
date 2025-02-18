@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  volcano_name: MyString
+  country: MyString
+  latitude: 1.5
+  longitude: 1.5
+  elevation: 1
+  primary_volcano_type: MyString
+  activity_evidence: MyString
+  last_known_eruption: MyString
+  year: 1
+  month: 1
+  day: 1
+  tsu: MyString
+  eq: MyString
+  vei: MyString
+  deaths: 1
+  damage_mil: 1.5
+  houses_destroyed: 1
+  total_deaths: 1
+  total_damage_mil: 1.5
+
+two:
+  volcano_name: MyString
+  country: MyString
+  latitude: 1.5
+  longitude: 1.5
+  elevation: 1
+  primary_volcano_type: MyString
+  activity_evidence: MyString
+  last_known_eruption: MyString
+  year: 1
+  month: 1
+  day: 1
+  tsu: MyString
+  eq: MyString
+  vei: MyString
+  deaths: 1
+  damage_mil: 1.5
+  houses_destroyed: 1
+  total_deaths: 1
+  total_damage_mil: 1.5
