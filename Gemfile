@@ -49,3 +49,7 @@ end
 gem 'graphql'
 
 gem "propshaft", "~> 1.1"
+
+gem "redis", "~> 5.4"
+
+gem "redis-rails", "~> 0.0.0"
