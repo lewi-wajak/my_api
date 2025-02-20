@@ -105,6 +105,7 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    fiber-storage (1.0.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -112,6 +113,10 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.1)
       railties
+    graphql (2.4.10)
+      base64
+      fiber-storage
+      logger
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
@@ -186,6 +191,11 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
+    propshaft (1.1.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     psych (5.2.3)
       date
       stringio
@@ -332,8 +342,10 @@ DEPENDENCIES
   devise
   doorkeeper
   graphiql-rails
+  graphql
   kamal
   kaminari
+  propshaft (~> 1.1)
   puma (>= 5.0)
   rails (~> 8.0.1)
   rubocop-rails-omakase

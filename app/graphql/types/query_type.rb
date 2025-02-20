@@ -1,44 +1,25 @@
-# frozen_string_literal: true
-
 module Types
   class QueryType < Types::BaseObject
-    field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
-      argument :id, ID, required: true, description: "ID of the object."
-    end
-
-    def node(id:)
-      context.schema.object_from_id(id, context)
-    end
-
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
-      argument :ids, [ID], required: true, description: "IDs of the objects."
-    end
-
-    def nodes(ids:)
-      ids.map { |id| context.schema.object_from_id(id, context) }
-    end
-
-    # Example test field
-    field :test_field, String, null: false, description: "An example field added by the generator"
-    
-    def test_field
-      "Hello World!"
-    end
-
-    # Query a single volcano by ID
     field :volcano, Types::VolcanoType, null: true do
       argument :id, ID, required: true
+    end
+
+    field :volcanoes, [Types::VolcanoType], null: true do
+      argument :country, String, required: false
+      argument :primary_volcano_type, String, required: false
+      argument :activity_evidence, String, required: false
     end
 
     def volcano(id:)
       Volcano.find_by(id: id)
     end
 
-    # Query all volcanoes
-    field :volcanoes, [Types::VolcanoType], null: false, description: "Fetch all volcanoes"
-    
-    def volcanoes
-      Volcano.all
+    def volcanoes(country: nil, primary_volcano_type: nil, activity_evidence: nil)
+      scope = Volcano.all
+      scope = scope.where(country: country) if country
+      scope = scope.where(primary_volcano_type: primary_volcano_type) if primary_volcano_type
+      scope = scope.where(activity_evidence: activity_evidence) if activity_evidence
+      scope
     end
   end
 end

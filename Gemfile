@@ -46,3 +46,6 @@ group :development do
   gem 'graphiql-rails'
 end
 
+gem 'graphql'
+
+gem "propshaft", "~> 1.1"
