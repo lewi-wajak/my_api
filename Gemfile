@@ -16,7 +16,8 @@ gem "solid_queue"
 gem "solid_cable"
 
 gem 'kaminari'
-
+gem 'doorkeeper'
+gem 'devise'
 
 
 gem "bootsnap", require: false
