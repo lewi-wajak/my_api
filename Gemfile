@@ -52,3 +52,7 @@ gem "propshaft", "~> 1.1"
 
 gem "redis", "~> 5.4"
 
+gem 'rswag-ui'
+gem 'rswag-api'
+gem 'rswag-specs'
+
