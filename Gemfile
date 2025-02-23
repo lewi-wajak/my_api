@@ -18,7 +18,7 @@ gem "solid_cable"
 gem 'kaminari'
 gem 'doorkeeper'
 gem 'devise'
-
+gem 'pg'
 
 gem "bootsnap", require: false
 
