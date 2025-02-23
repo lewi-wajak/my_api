@@ -9,7 +9,7 @@ class VolcanosController < ApplicationController
     render json: @volcanos
   end
   
-  # GET /volcanos/1
+  
   def show
     @volcano = Rails.cache.fetch("volcano_#{params[:id]}", expires_in: ENV.fetch("CACHE_EXPIRY") { 6.hours }) do
       Volcano.find(params[:id])
@@ -17,7 +17,7 @@ class VolcanosController < ApplicationController
     render json: @volcano
   end
 
-  # POST /volcanos
+  
   def create
     @volcano = Volcano.new(volcano_params)
 
@@ -29,7 +29,7 @@ class VolcanosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /volcanos/1
+  
   def update
     if @volcano.update(volcano_params)
       Rails.cache.delete("volcano_#{params[:id]}")
@@ -40,7 +40,7 @@ class VolcanosController < ApplicationController
     end
   end
 
-  # DELETE /volcanos/1
+  
   def destroy
     @volcano.destroy!
     Rails.cache.delete("volcano_#{params[:id]}")
@@ -50,14 +50,13 @@ class VolcanosController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  
   def set_volcano
     @volcano = Volcano.find_by(id: params[:id])
     return render json: { error: 'Volcano not found' }, status: :not_found unless @volcano
   end
   
 
-  # Only allow a list of trusted parameters through.
   def volcano_params
     params.require(:volcano).permit(:volcano_name, :country, :latitude, :longitude, :elevation, 
                                     :primary_volcano_type, :activity_evidence, :last_known_eruption, 
