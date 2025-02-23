@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   post "/graphql", to: "graphql#execute"
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'api/registrations' }
+
   use_doorkeeper
   resources :volcanos
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
