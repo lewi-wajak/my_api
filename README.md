@@ -6,6 +6,7 @@ The goal of this project is to create a RESTful API for managing Volcano data. T
 
 ## Description
 This API lets users securely access the Volcano database with Doorkeeper OAuth. Users can log in, create accounts, and manage Volcanic records. It's designed for Postman testing and offers a GraphQL interface for easy browser use.
+* Challenges:  I have commentted the first line of code (before_action :doorkeeper_authorize!) in the volcano_controller.rb file because I am using a Free Tier instance on the render.com. So, I don't have access to the render shell to get client_id and client_secret for user to have access_token. But with the line commented user can fetch, create, update and delete volcanic record.
 
 ## Tech Stack
 * Ruby          
@@ -170,11 +171,11 @@ Replace :id with the ID of the volcano record you want to delete.
 You can access the hosted version of my project on
 https://my-api-hu6y.onrender.com/
 
-* Challenges:  I have commentted the first line of code (before_action :doorkeeper_authorize!) in the volcano_controller.rb file because I am using a Free Tier instance on the render.com. So, I don't have access to the render shell to get client_id and client_secret for user to have access_token. But with the line commented user can fetch, create, update and delete volcanic record.
-
 ## GraphQL Interface
-
+1. Accessing the GraphQL Interface
 To use the GraphQL interface, open your web browser and go to http://localhost:3000/graphiql.
+
+## NOTE: I couldn't implement the Doorkeeper Oauth to work with the GraphQL Interface but you can locally perform the following queries and mutations on your browser or postman.
 
 2. Query Vocanos
 Example of query
@@ -191,7 +192,64 @@ Example of query
 - Description: This query retrieves a particular volcanos specific data
 
 3. Create a volcano
+    * Example of Mutation
+        {
+    "query": "mutation { createVolcano(input: { volcanoName: \"Mount Test\", country: \"Testland\", latitude: 10.5, longitude: 20.3, elevation: 2500, primaryVolcanoType: \"Stratovolcano\", activityEvidence: \"Active\", lastKnownEruption: \"2020\", year: 2020, month: 6, day: 15 }) { volcano { id volcanoName country elevation } errors } }"
+    }
 
-Note: I couldn't get the Doorkeeper OAuth to work with the GraphQL interface, but you can still do the following queries and mutations in your browser locally.
+    * Example of response
+        {
+        "data": {
+            "createVolcano": {
+                "volcano": {
+                    "id": "2224",
+                    "volcanoName": "Mount Test",
+                    "country": "Testland",
+                    "elevation": 2500
+                },
+                "errors": []
+            }
+        }
+    }
+
+4. Update a Volcano
+    * Example of mutation
+        {
+    "query": "mutation { updateVolcano(input: { id: 2224, elevation: 3000, activityEvidence: \"Dormant\" }) { volcano { id volcanoName elevation activityEvidence } errors } }"
+    }
+
+    * Example of response
+    {
+    "data": {
+        "updateVolcano": {
+            "volcano": {
+                "id": "2224",
+                "volcanoName": "Mount Test",
+                "elevation": 3000,
+                "activityEvidence": "Dormant"
+            },
+            "errors": []
+        }
+    }
+}
+
+* Kindly Note that all the fields should be there but do not change the id 
+
+5. delete a volcano
+    * Example of mutation
+            {
+    "query": "mutation { deleteVolcano(input: { id: 2224 }) { volcano { id volcanoName } errors } }"
+    }
+
+## Postman Documentation Link
+The follow the following link to access the postman documentation
+https://documenter.getpostman.com/view/42522064/2sAYdcrXVJ
+
+
+The Core Team
+Lewi Wajak Abbai
+
+
+
 
 
