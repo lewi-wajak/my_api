@@ -1,5 +1,5 @@
 class VolcanosController < ApplicationController
-  before_action :doorkeeper_authorize!, only: %i[create update destroy]
+  # before_action :doorkeeper_authorize!, only: %i[create update destroy]
   before_action :set_volcano, only: %i[show update destroy]
 
   def index
