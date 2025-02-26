@@ -94,7 +94,7 @@ This API lets users securely access the Volcano database with Doorkeeper OAuth. 
 
 
 4. Access Volcanic Data
-    * Endpoint: GET [/api/v1/earthquakes](http://localhost:3000/volcanos)
+    * Endpoint: GET [/api/v1/volcanos](http://localhost:3000/volcanos)
     *  Description: Fetch a list of earthquake records with pagination (max 20 elements per page). 
         Get is not a Protected route, you can fetch data without authorization.
 
@@ -246,10 +246,12 @@ The follow the following link to access the postman documentation
 https://documenter.getpostman.com/view/42522064/2sAYdcrXVJ
 
 
-The Core Team
+### The Core Team
 Lewi Wajak Abbai
+<br/>
+OGTL Academy
 
 
-
-
+<span><i>Made at <a href='https://qwasar.io'>Qwasar SV -- Software Engineering School</a></i></span>
+<span><img alt='Qwasar SV -- Software Engineering School's Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px' /></span>
 
